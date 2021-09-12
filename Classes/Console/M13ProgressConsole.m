@@ -248,7 +248,7 @@
 {
     NSMutableString *string = [[NSMutableString alloc] initWithString:@"\n"];
     if (!_indeterminate) {
-        for (float f = 0; f <= 1; f += .05) {
+        for (CGFloat f = 0; f <= 1; f += .05) {
             if (f <= _progress) {
                 [string appendString:@"."];
             } else {
@@ -287,7 +287,7 @@
 {
     NSMutableString *string = [[NSMutableString alloc] initWithString:@"\n"];
     if (!_indeterminate) {
-        for (float f = 0; f <= 1; f += .05) {
+        for (CGFloat f = 0; f <= 1; f += .05) {
             if (f <= _progress) {
                 [string appendString:@"∙"];
             } else {

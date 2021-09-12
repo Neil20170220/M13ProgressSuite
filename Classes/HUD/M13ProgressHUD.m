@@ -615,8 +615,8 @@
         //Break the status into indivual words
         NSArray *wordsArray = [_status componentsSeparatedByString:@" "];
         //Calculate the mean width and standard deviation to use as parameters for where line breaks should go.
-        float meanWidth = 0.0;
-        float standardDeviation = 0.0;
+        CGFloat meanWidth = 0.0;
+        CGFloat standardDeviation = 0.0;
         NSMutableArray *sizesArray = [NSMutableArray array];
         //Calculate size of each word
         for (NSString *word in wordsArray) {
@@ -626,14 +626,14 @@
             meanWidth += wordRect.size.width;
         }
         //Finish the mean size and standard deviation calculations
-        meanWidth = roundf(meanWidth / wordsArray.count);
+        meanWidth = round(meanWidth / wordsArray.count);
         //Calculate the standard deviation
         for (NSString *rect in sizesArray) {
             CGRect theRect = CGRectFromString(rect);
             //Sum the widths to calculate the mean width
-            standardDeviation += exp2f((float)theRect.size.width - meanWidth);
+            standardDeviation += exp2((float)theRect.size.width - meanWidth);
         }
-        standardDeviation = sqrtf(standardDeviation / wordsArray.count);
+        standardDeviation = sqrt(standardDeviation / wordsArray.count);
         //Correct the mean width if it is below the minimum size
         if (meanWidth < self.minimumSize.width) {
             meanWidth = (float)self.minimumSize.width;
